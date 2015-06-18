@@ -8,9 +8,9 @@ class CreateInitialTables < ActiveRecord::Migration
       t.column(:ingredient_name, :string)
       t.timestamps()
     end
-    create_table(:ingredients_recipes) do |t|
-      t.column(:ingredient_id, :integer)
-      t.column(:recipe_id, :integer)
+    create_table :ingredients_recipes, id: false do |t|
+      t.belongs_to :recipe, index: true
+      t.belongs_to :ingredient, index: true
     end
   end
 end

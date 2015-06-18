@@ -1,0 +1,22 @@
+<h1>Recipe Box</h1>
+
+
+<h3>Here are your recipes</h3>
+<% if @recipes.any?() %>
+<% @recipes.each() do |recipe| %>
+<ul>
+  <li><a href='/recipe/<%=recipe.id()%>'> <%=recipe.name()%></a></li>
+</ul>
+<%end%>
+<%else%>
+<p>you have no recipes!</p>
+<%end%>
+
+<form action='/' method='post'>
+  <label for='recipe_title'> Add recipe: </label>
+  <input id='recipe_title' name='recipe_title' type='text'>
+  <button type='submit' class='btn btn-success'> Save Recipe </button>
+</form>
+<br>
+<a href='/add_ingredients/'> Add ingredients </a>
+</br>

@@ -1,0 +1,36 @@
+<h1> <%=@recipe.name()%> </h1>
+
+
+<form action='/save_recipe/<%=@id%>' method='post'>
+  <input type="hidden" name="_method" value="patch">
+
+
+
+  <h1> Add Ingredients here: </h1>
+
+  <% if @ingredients.any?() %>
+
+  <% @ingredients.each() do |ingredient| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id() %>"><%= ingredient.ingredient_name() %></input>
+      <input id="id" type="hidden" name="id" value="<%= @recipe.id() %>"></input>
+    </label>
+  </div>
+  <% end %>
+
+
+  <%else%>
+  <p> There are no ingredients! </p>
+
+</form>
+
+<a href='/add_ingredients/'> Add ingredients </a>
+
+<% end %>
+
+<button type="submit">Save Recipe</button>
+
+<p><br>
+  <a href='/'> Home </a>
+</p></br>

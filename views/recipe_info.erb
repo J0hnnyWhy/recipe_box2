@@ -1,0 +1,23 @@
+<h1> <%=@recipe.name()%> </h1>
+
+
+<h1>Ingredients: </h1>
+
+<% if @ingredients.any?() %>
+<% @ingredients.each() do |ingredient| %>
+<ul>
+  <li><%=ingredient.ingredient_name()%></li>
+</ul>
+<%end%>
+<%else%>
+<p> There are no ingredients! </p>
+<%end%>
+
+<form action='/recipe/<%=@recipe.id%>' method='post'>
+  <input name='_method' type='hidden' value='delete'>
+  <input id='id' name='id' type='hidden' value='@recipe.id'>
+  <button type='submit' class="btn btn-danger">Delete Recipe</button>
+</form>
+
+<a href='/recipe/<%=@recipe.id()%>'> Edit Recipe </a>
+<a href='/'> Go Home </a>

@@ -1,0 +1,20 @@
+<h1> Ingredients </h1>
+<link rel='stylesheet' href="styles.css"
+<h3>Here are your ingredients</h3>
+<% if @ingredients.any?() %>
+<% @ingredients.each() do |ingredient| %>
+<ul>
+  <li><%=ingredient.ingredient_name()%></a></li>
+</ul>
+<%end%>
+<%else%>
+<p>you have no ingredients, Loser!</p>
+<%end%>
+
+<form action='/ingredient_save/' method='post'>
+  <label for='ingredient_name'> Add ingredient: </label>
+  <input id='ingredient_name' name='ingredient_name' type='text'>
+  <button type='submit' class='btn btn-success'> Add ingredient </button>
+</form>
+
+<a href='/'> Go home! </a>
